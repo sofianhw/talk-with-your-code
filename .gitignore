@@ -1,8 +1,8 @@
 **/.DS_Store
-!db/
-!repo/
-db/**
-repo/**
+db/*
+repo/*
+!db/.gitkeep
+!repo/.gitkeep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
