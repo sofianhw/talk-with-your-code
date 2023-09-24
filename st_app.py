@@ -18,7 +18,7 @@ dotenv.load_dotenv()
 dir_path = os.getcwd()+"/"
 repo_path = dir_path+"repo"
 persist_directory = 'db'
-db_path = os.getcwd()+persist_directory
+db_path = dir_path+persist_directory
 
 if os.path.exists(repo_path) == False:
     os.makedirs(repo_path)

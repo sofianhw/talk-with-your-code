@@ -26,12 +26,12 @@ if os.path.exists(db_path) == False:
     os.makedirs(db_path)
 
 if len(os.listdir(repo_path)) == 0:
-    repo = Repo.clone_from("https://github.com/sofianhw/data-platform", to_path=repo_path)
+    repo = Repo.clone_from("https://github.com/hwchase17/langchain", to_path=repo_path)
 
 loader = GenericLoader.from_filesystem(
-    repo_path+"/",
+    repo_path+"/libs/langchain/langchain",
     glob="**/*",
-    suffixes=[".yml"],
+    suffixes=[".py"],
     parser=LanguageParser(language=Language.PYTHON, parser_threshold=500)
 )
 documents = loader.load()
