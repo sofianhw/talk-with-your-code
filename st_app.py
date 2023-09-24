@@ -15,8 +15,16 @@ from langchain.memory import ConversationSummaryMemory
 from langchain.chains import ConversationalRetrievalChain
 
 dotenv.load_dotenv()
-repo_path = os.getcwd()+"/repo"
+dir_path = os.getcwd()+"/"
+repo_path = dir_path+"repo"
 persist_directory = 'db'
+db_path = os.getcwd()+persist_directory
+
+if os.path.exists(repo_path) == False:
+    os.makedirs(repo_path)
+
+if os.path.exists(db_path) == False:
+    os.makedirs(db_path)
 
 if len(os.listdir(repo_path)) == 0:
     repo = Repo.clone_from("https://github.com/hwchase17/langchain", to_path=repo_path)
@@ -37,7 +45,7 @@ texts = python_splitter.split_documents(documents)
 
 embedding = OpenAIEmbeddings(disallowed_special=())
 
-if len(os.listdir(os.getcwd()+'/db')) == 0:
+if len(os.listdir(db_path)) == 0:
     db = Chroma.from_documents(documents=texts, embedding=embedding, persist_directory=persist_directory)
 else:
     db = Chroma(persist_directory=persist_directory, embedding_function=embedding)
