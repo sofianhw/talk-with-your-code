@@ -17,7 +17,7 @@ dotenv.load_dotenv()
 dir_path = os.getcwd()+"/"
 repo_path = dir_path+"repo"
 persist_directory = 'db'
-db_path = os.getcwd()+persist_directory
+db_path = dir_path+persist_directory
 
 if os.path.exists(repo_path) == False:
     os.makedirs(repo_path)
@@ -26,12 +26,12 @@ if os.path.exists(db_path) == False:
     os.makedirs(db_path)
 
 if len(os.listdir(repo_path)) == 0:
-    repo = Repo.clone_from("https://github.com/hwchase17/langchain", to_path=repo_path)
+    repo = Repo.clone_from("https://github.com/sofianhw/data-platform", to_path=repo_path)
 
 loader = GenericLoader.from_filesystem(
-    repo_path+"/libs/langchain/langchain",
+    repo_path+"/",
     glob="**/*",
-    suffixes=[".py"],
+    suffixes=[".yml"],
     parser=LanguageParser(language=Language.PYTHON, parser_threshold=500)
 )
 documents = loader.load()
