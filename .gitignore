@@ -1,6 +1,8 @@
 **/.DS_Store
-db/
-repo/
+!db/
+!repo/
+db/**
+repo/**
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
